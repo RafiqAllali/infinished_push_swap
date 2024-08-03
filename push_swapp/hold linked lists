@@ -1,0 +1,98 @@
+void sa(t_stack **head)
+{
+    if (*head)
+    {
+    t_stack *temp = *head;
+    *head = (*head) -> next;
+    temp -> next = (*head) -> next;
+    (*head)->next = temp;
+    }
+}
+
+
+void ra(t_stack **head)
+{
+    if (*head == NULL || (*head)->next == NULL)
+        return;
+
+    t_stack *temp = *head;
+    t_stack *first = *head;
+
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    *head = first->next;
+    first->next = NULL;
+    temp->next = first;
+}
+void rra(t_stack **head)
+{
+    if (*head == NULL || (*head)->next == NULL)
+        return;
+
+    t_stack *temp = *head;
+    t_stack *prev = NULL;
+
+    while (temp->next)
+    {
+        prev = temp;
+        temp = temp->next;
+    }
+    prev->next = NULL;
+    temp->next = *head;
+    *head = temp;
+}
+
+// void    ft_pa(t_stack **head, t_stack **head2)
+// {
+//     t_stack *temp;
+
+//     if (!*head)
+//         return;
+
+//     temp = *head; 
+//     *head = (*head)->next; 
+//     temp->next = *head2; 
+//     *head2 = temp;     
+// }
+// t_stack *ft_lstnew(int content)
+// {
+//     t_stack *list;
+
+//     list = (t_stack *)malloc(sizeof(t_stack));
+//     if (!list)
+//         return NULL;
+
+//     list->data = content;
+//     list->next = NULL;
+
+//     return list;
+// }
+
+// void ft_lst_addback(t_stack **head, t_stack *new_node) {
+//     t_stack *current;
+
+//     if (!head || !new_node)
+//         return;
+//     if (*head == NULL) 
+//     {
+//         *head = new_node;
+//         return;
+//     }
+
+//     current = *head;
+//     while (current->next) {
+//         current = current->next;
+//     }
+//     current->next = new_node;
+// }
+
+// void ft_lstprint(t_stack *head) {
+//     t_stack *current = head;
+
+//     while (current) {
+//         printf("%d\n", current->data);
+//         current = current->next;
+//     }
+// }
